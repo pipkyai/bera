@@ -47,12 +47,12 @@ async function main() {
 
     if (data && data.result) {
         // Преобразуем result в число, делим на триллион и округляем до целого
-        const resultInTrillions = Math.round(Number(data.result) / 1_000_000_000_000);
+        const resultInTrillions = (Number(data.result) / 1_000_000_000_000_000_000).toFixed(2);
 
         // Если result изменился
         if (resultInTrillions !== previousResult) {
             // Отправляем сообщение в Telegram
-            const message = `Новое значение result (в триллионах): ${resultInTrillions}`;
+            const message = `Баланс: ${resultInTrillions} Bera`;
             await sendToTelegram(message);
 
             // Обновляем предыдущее значение result
