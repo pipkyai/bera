@@ -10,6 +10,8 @@ const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 // ID чата, куда будет отправляться сообщение
 const CHAT_ID = process.env.CHAT_ID;
 
+const APIWEB = process.env.APIWEB;
+
 // Создаем экземпляр бота
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: false });
 
@@ -20,7 +22,7 @@ let previousResult = null;
 async function fetchData() {
     try {
         // Выполняем API-запрос
-        const response = await axios.get('https://api.example.com/data');
+        const response = await axios.get(APIWEB);
         return response.data;
     } catch (error) {
         console.error('Ошибка при выполнении API-запроса:', error);
